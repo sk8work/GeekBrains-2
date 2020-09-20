@@ -17,6 +17,7 @@ import (
 )
 
 func main() {
+
 	if err := getReq(); err != nil {
 		log.Fatal(err)
 	}
@@ -33,8 +34,6 @@ func getReq() error {
 	}
 	defer resp.Body.Close()
 	log.Printf("Status: %v; \nStatusCode: %v; \nHeader: %v\n", resp.Status, resp.StatusCode, resp.Header)
-
-	// _, err := io.Copy(os.Stdout, resp.Body)
 	_, err = io.Copy(os.Stdout, resp.Body)
 	if err != nil {
 		return err
